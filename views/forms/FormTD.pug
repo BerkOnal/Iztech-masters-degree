@@ -1,0 +1,176 @@
+extends ../layouts/main-layout.pug
+
+block content 
+
+        h2.mt-4.pb-3 Form TD : Thesis Topic and Advisor Selection
+        if(action === "create")
+          form(action='/'+ user.userType+"/createFormTD" method='POST')
+            is
+              .form-row   
+                .col-md-6.mb-3
+                  label(for='studentNameSurname') Student Name Surname
+                  input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+                .col-md-6.mb-3
+                  label(for='studentID') Student ID
+                  input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+                .col-md-6.mb-3
+                  label(for='email') Student E-Mail
+                  input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='advisorData') Advisor List
+                  select#advisorData.form-control(name ="advisorData")
+                    each advisor in advisors                
+                        option(value= advisor._id) #{advisor.nameSurname}
+                .col-md-6.mb-3 
+                  label(for='thesisName')  Thesis Name
+                  input#thesisName.form-control(type='text' name='thesisName' placeholder='Please Enter' required='')
+                .col-md-6.mb-3
+                  label(for='validationCustom02') Request Number
+                  input#requestNumber.form-control(type='text' name='requestNumber' value='' disabled='')
+                .col-md-6.mb-3
+                  label(for='programName') Program Name
+                  .form-check
+                      input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                      label.form-check-label(for='flexCheckCheckedDisabled')
+                      |   Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |   PhD with Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |  PhD with Bachelor's
+              .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+              br
+              input.btn.btn-success(type='submit' value='Save')
+        else if(action === "update")
+          form(action='/'+ user.userType+"/updateFormTD" method='POST')
+            is
+              .form-row   
+                .col-md-6.mb-3
+                  label(for='studentNameSurname') Student Name Surname
+                  input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+                .col-md-6.mb-3
+                  label(for='studentID') Student ID
+                  input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+                .col-md-6.mb-3
+                  label(for='email') Student E-Mail
+                  input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='advisorData') Advisor List
+                  select#advisorData.form-control(name ="advisorData")
+                    each advisor in advisors                
+                        option(value= advisor._id) #{advisor.nameSurname}
+                .col-md-6.mb-3
+                  label(for='thesisName')  Thesis Name
+                  input#thesisName.form-control(type='text' name='thesisName' value=form.thesisName required='' readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='validationCustom02') Request Number
+                  input#requestNumber.form-control(type='text' name='requestNumber' value=form._id readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='programName') Program Name
+                  .form-check
+                      input#programName.form-check-input(type='checkbox' value='' checked='' readonly="readonly")
+                      label.form-check-label(for='flexCheckCheckedDisabled')
+                      |   Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' readonly="readonly")
+                      label.form-check-label(for='flexCheckDisabled')
+                      |   PhD with Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' readonly="readonly")
+                      label.form-check-label(for='flexCheckDisabled')
+                      |  PhD with Bachelor's
+              .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+              br
+              input.btn.btn-success(type='submit' value='Update')
+        else if(action === "approve")
+          form(action='/'+ user.userType+"/approveForm" method='POST')
+            is
+              .form-row   
+                .col-md-6.mb-3
+                  label(for='studentNameSurname') Student Name Surname
+                  input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+                .col-md-6.mb-3
+                  label(for='studentID') Student ID
+                  input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+                .col-md-6.mb-3
+                  label(for='email') Student E-Mail
+                  input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='advisorData') Selected Advisor
+                  input#advisorData.form-control(type='text' name='advisorData' value=advisor.nameSurname required='' readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='thesisName')  Thesis Name
+                  input#thesisName.form-control(type='text' name='thesisName' value=form.thesisName required='' readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='validationCustom02') Request Number
+                  input#requestNumber.form-control(type='text' name='requestNumber' value=form._id readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='programName') Program Name
+                  .form-check
+                      input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                      label.form-check-label(for='flexCheckCheckedDisabled')
+                      |   Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |   PhD with Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |  PhD with Bachelor's
+              
+              br
+              if((user.userType === "advisor" && form.formStatus === "Send to Advisor") || (user.userType === "eabdb" && form.formStatus === "Approved by Advisor"))
+                .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+                input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Approve') 
+                input.btn.btn-danger.btn-lg.mr-4.input(type='submit' name="submit" value='Disapprove')
+        else if(action === "view")
+          form(action='/'+ user.userType+"/getFormTD" method='POST')
+            is
+              .form-row   
+                .col-md-6.mb-3
+                  label(for='studentNameSurname') Student Name Surname
+                  input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+                .col-md-6.mb-3
+                  label(for='studentID') Student ID
+                  input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+                .col-md-6.mb-3
+                  label(for='email') Student E-Mail
+                  input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='advisorData') Selected Advisor
+                  input#advisorData.form-control(type='text' name='advisorData' placeholder=advisor.nameSurname required='' readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='thesisName')  Thesis Name
+                  input#thesisName.form-control(type='text' name='thesisName' placeholder= form.thesisName required='' readonly = "readonly") 
+                .col-md-6.mb-3
+                  label(for='validationCustom02') Request Number
+                  input#requestNumber.form-control(type='text' name='requestNumber' value=form._id readonly="readonly")
+                .col-md-6.mb-3
+                  label(for='programName') Program Name
+                  .form-check
+                      input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                      label.form-check-label(for='flexCheckCheckedDisabled')
+                      |   Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |   PhD with Master's
+                      .form-check
+                      input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                      label.form-check-label(for='flexCheckDisabled')
+                      |  PhD with Bachelor's
+              br  
+        else
+          modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title You have already sent your TD Form!
+                  button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                  | Please contact with your administrator. You may be trying to create more forms than you can create.

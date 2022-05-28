@@ -1,0 +1,651 @@
+extends ../layouts/main-layout.pug
+
+block content 
+      
+      h2.mt-4.pb-3 Form TJ : Thesis Place,Time and Jury Assignment Form
+      if(action === "create")
+        form(action='/'+ user.userType+"/createFormTJ" method='POST')
+          is
+            .form-row  
+              .col-md-6.mb-3
+                label(for='advisorNameSurname') Thesis Advisor Name Surname
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = user.nameSurname readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = '' placeholder ="Please Enter" required = '') 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = '' placeholder = "Please Enter" required = '')  
+              .col-md-6.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' placeholder='Please Enter' required='')
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   PhD with Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |  PhD with Bachelor's            
+              .col-md-6.mb-3
+                label Thesis Defense: Master's Degree Thesis
+                 div.span4#programType
+                  input(type='radio',name='programType',value='1')#programType1
+                  label(for='programType1')
+                   i.yes
+                   span. 
+                    Face to Face
+                  br
+                  input(type='radio',name='programType',value='2')#programType2
+                  label(for='programType2')
+                   i.yes
+                   span. 
+                    Online 
+              .col-md-6.mb-3
+                label(for='place') The programme use for online the thesis defense or
+                br 
+                label() The place for thesis defense  
+                input#place.form-control(type='text' name='place' placeholder='Please Enter' required='')      
+              .col-md-6.mb-3
+                label(for='date')  Thesis Defence Date
+                input#date.form-control(type='date' name='date' placeholder='Please Enter' required='')
+              .col-md-6.mb-3
+                label(for='time')  Thesis Defence Hours Minutes
+                input#time.form-control(type='time' name='time' placeholder='Please Enter' required='')
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value='' disabled='')          
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Offical Member
+                  tbody
+                    tr
+                      td
+                        label(for='officialMemberNameSurname1') 
+                        input#officialMemberNameSurname1.form-control(type='text' name='officialMemberNameSurname1' value = "" )  
+                      td
+                        label(for='officialMemberEmail1') 
+                        input#officialMemberEmail1.form-control(type='text' name='officialMemberEmail1' value = "" )  
+                      td
+                        label(for='officialMemberInstitution1') 
+                        input#officialMemberInstitution1.form-control(type='text' name='officialMemberInstitution1' value = "" )  
+                      td
+                        label(for='officialMemberDepartment1') 
+                        input#officialMemberDepartment1.form-control(type='text' name='officialMemberDepartment1' value = "" )                      
+                    tr
+                      td
+                        label(for='officialMemberNameSurname2') 
+                        input#officialMemberNameSurname2.form-control(type='text' name='officialMemberNameSurname2' value = "" )  
+                      td
+                        label(for='officialMemberEmail2') 
+                        input#officialMemberEmail2.form-control(type='text' name='officialMemberEmail2' value = "" )  
+                      td
+                        label(for='officialMemberInstitution2') 
+                        input#officialMemberInstitution2.form-control(type='text' name='officialMemberInstitution2' value = "" )  
+                      td
+                        label(for='officialMemberDepartment2') 
+                        input#officialMemberDepartment2.form-control(type='text' name='officialMemberDepartment2' value = "" ) 
+                     
+                    tr
+                      td
+                        label(for='officialMemberNameSurname3') 
+                        input#officialMemberNameSurname3.form-control(type='text' name='officialMemberNameSurname3' value = "" )  
+                      td
+                        label(for='officialMemberEmail3') 
+                        input#officialMemberEmail3.form-control(type='text' name='officialMemberEmail3' value = "")  
+                      td
+                        label(for='officialMemberInstitution3') 
+                        input#officialMemberInstitution3.form-control(type='text' name='officialMemberInstitution3' value = "" )  
+                      td
+                        label(for='officialMemberDepartment3') 
+                        input#officialMemberDepartment3.form-control(type='text' name='officialMemberDepartment3' value = "" )
+
+                    tr
+                      td
+                        label(for='officialMemberNameSurname4')
+                        input#officialMemberNameSurname4.form-control(type='text' name='officialMemberNameSurname4' value = "" )  
+                      td
+                        label(for='officialMemberEmail4') 
+                        input#officialMemberEmail4.form-control(type='text' name='officialMemberEmail4' value = "")  
+                      td
+                        label(for='officialMemberInstitution4') 
+                        input#officialMemberInstitution4.form-control(type='text' name='officialMemberInstitution4' value = "" )  
+                      td
+                        label(for='officialMemberDepartment4') 
+                        input#officialMemberDepartment4.form-control(type='text' name='officialMemberDepartment4' value = "" )       
+                   
+              
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Backup Members
+                  tbody
+                    tr
+                      td
+                        label(for='backupMemberNameSurname1') 
+                        input#backupMemberNameSurname1.form-control(type='text' name='backupMemberNameSurname1' value = "" )  
+                      td
+                        label(for='backupMemberEmail1') 
+                        input#backupMemberEmail1.form-control(type='text' name='backupMemberEmail1' value = "" )  
+                      td
+                        label(for='backupMemberInstitution1') 
+                        input#backupMemberInstitution1.form-control(type='text' name='backupMemberInstitution1' value = "" )  
+                      td
+                        label(for='backupMemberDepartment1') 
+                        input#backupMemberDepartment1.form-control(type='text' name='backupMemberDepartment1' value = "" )  
+                    
+                    tr
+                      td
+                        label(for='backupMemberNameSurname2') 
+                        input#backupMemberNameSurname2.form-control(type='text' name='backupMemberNameSurname2' value = "" )  
+                      td
+                        label(for='backupMemberEmail2') 
+                        input#backupMemberEmail2.form-control(type='text' name='backupMemberEmail2' value = "" )  
+                      td
+                        label(for='backupMemberInstitution2') 
+                        input#backupMemberInstitution2.form-control(type='text' name='backupMemberInstitution2' value = "" )  
+                      td
+                        label(for='backupMemberDepartment2') 
+                        input#backupMemberDepartment2.form-control(type='text' name='backupMemberDepartment2' value = "" ) 
+                     
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Jury Members from outside IZTECH
+                  tbody
+                     tr
+                      td
+                        label(for='MemberNameSurname1') 
+                        input#MemberNameSurname1.form-control(type='text' name='MemberNameSurname1' value = "" )  
+                      td
+                        label(for='MemberEmail1') 
+                        input#MemberEmail1.form-control(type='text' name='MemberEmail1' value = "" )  
+                      td
+                        label(for='MemberInstitution1') 
+                        input#MemberInstitution1.form-control(type='text' name='MemberInstitution1' value = "" )  
+                      td
+                        label(for='MemberDepartment1') 
+                        input#MemberDepartment1.form-control(type='text' name='MemberDepartment1' value = "" )  
+                     tr
+                      td
+                        label(for='MemberNameSurname2') 
+                        input#MemberNameSurname2.form-control(type='text' name='MemberNameSurname2' value = "" )  
+                      td
+                        label(for='MemberEmail2') 
+                        input#MemberEmail2.form-control(type='text' name='MemberEmail2' value = "" )  
+                      td
+                        label(for='MemberInstitution2') 
+                        input#MemberInstitution2.form-control(type='text' name='MemberInstitution2' value = "" )  
+                      td
+                        label(for='MemberDepartment2') 
+                        input#MemberDepartment2.form-control(type='text' name='MemberDepartment2' value = "" ) 
+                     
+                     tr
+                      td
+                        label(for='MemberNameSurname3') 
+                        input#MemberNameSurname3.form-control(type='text' name='MemberNameSurname3' value = "" )  
+                      td
+                        label(for='MemberEmail3') 
+                        input#MemberEmail3.form-control(type='text' name='MemberEmail3' value = "")  
+                      td
+                        label(for='MemberInstitution3') 
+                        input#MemberInstitution3.form-control(type='text' name='MemberInstitution3' value = "" )  
+                      td
+                        label(for='MemberDepartment3') 
+                        input#MemberDepartment3.form-control(type='text' name='MemberDepartment3' value = "" )
+
+                     tr
+                      td
+                        label(for='MemberNameSurname4') 
+                        input#MemberNameSurname4.form-control(type='text' name='MemberNameSurname4' value = "" )  
+                      td
+                        label(for='MemberEmail4') 
+                        input#MemberEmail4.form-control(type='text' name='MemberEmail4' value = "")  
+                      td
+                        label(for='MemberInstitution4') 
+                        input#MemberInstitution4.form-control(type='text' name='MemberInstitution4' value = "" )  
+                      td
+                        label(for='MemberDepartment4') 
+                        input#MemberDepartment4.form-control(type='text' name='MemberDepartment4' value = "" )       
+                   
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            input.btn.btn-success(type='submit' value='Save')
+
+      else if(action === "update")
+        form(action='/'+ user.userType+"/createFormTJ" method='POST')
+          is
+            .form-row  
+              .col-md-6.mb-3
+                label(for='advisorNameSurname') Thesis Advisor Name Surname
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = advisor.nameSurname readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname) 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID)  
+              .col-md-6.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' placeholder='Please Enter' value = form.programName required='')
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   PhD with Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |  PhD with Bachelor's            
+              .col-md-6.mb-3
+                label Thesis Defense: Master's Degree Thesis
+                div.span4#programType
+                if(form.isOnline)
+                  input(type='radio',name='programType',value='1')#programType1
+                  label(for='programType1')
+                   i.yes
+                   span. 
+                    Face to Face
+                  br
+                  input(type='radio',name='programType',value='2' checked = 'checked')#programType2
+                  label(for='programType2')
+                   i.yes
+                   span. 
+                     Online 
+                else
+                  input(type='radio',name='programType',value='1' checked = 'checked')#programType1
+                  label(for='programType1')
+                  i.yes
+                  span. 
+                    Face to Face
+                  br
+                  input(type='radio',name='programType',value='2')#programType2
+                  label(for='programType2')
+                  i.yes
+                  span. 
+                    Online  
+                    
+              .col-md-6.mb-3
+                label(for='place') The programme use for online the thesis defense
+                input#place.form-control(type='text' name='place' value=form.place required='')      
+              .col-md-6.mb-3
+                label(for='date')  Thesis Defence Date
+                input#date.form-control(type='date' name='date' value=form.date required='')
+              .col-md-6.mb-3
+                label(for='time')  Thesis Defence Hours Minutes
+                input#time.form-control(type='time' name='time' value=form.time required='')
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' placeholder=form._id value='' disabled='')      
+              
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Official Member
+                  tbody 
+                        - var count = 1;
+                        each member in form.officialMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='officialMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('officialMemberNameSurname'+count) value = user.nameSurname)  
+                                td
+                                  label(for='officialMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('officialMemberEmail'+count) value = user.email)  
+                                td
+                                  label(for='officialMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('officialMemberInstitution'+count) value = user.institution)  
+                                td
+                                  label(for='officialMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('officialMemberDepartment'+count) value = user.department) 
+                                - count++ 
+                        while count < 5
+                          tr
+                                td
+                                  label(for='officialMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('officialMemberNameSurname'+count) value = "")  
+                                td
+                                  label(for='officialMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('officialMemberEmail'+count) value = value = "")  
+                                td
+                                  label(for='officialMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('officialMemberInstitution'+count) value = "")  
+                                td
+                                  label(for='officialMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('officialMemberDepartment'+count) value = "") 
+                                - count++ 
+
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Backup Members
+                       - var count = 1;
+                        each member in form.backupMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='backupMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('backupMemberNameSurname'+count) value = user.nameSurname)  
+                                td
+                                  label(for='backupMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('backupMemberEmail'+count) value = user.email)  
+                                td
+                                  label(for='backupMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('backupMemberInstitution'+count) value = user.institution)  
+                                td
+                                  label(for='backupMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('backupMemberDepartment'+count) value = user.department) 
+                                - count++ 
+                        while count < 3
+                          tr
+                                td
+                                  label(for='backupMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('backupMemberNameSurname'+count) value = "")  
+                                td
+                                  label(for='backupMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('backupMemberEmail'+count) value = value = "")  
+                                td
+                                  label(for='backupMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('backupMemberInstitution'+count) value = "")  
+                                td
+                                  label(for='backupMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('backupMemberDepartment'+count) value = "") 
+                                - count++ 
+                     
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Jury Members from outside IZTECH
+                  tbody
+                       - var count = 1;
+                        each member in form.outsideMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='MemberNameSurname') 
+                                  input#MemberNameSurname1.form-control(type='text' name=('MemberNameSurname'+count) value = user.nameSurname)  
+                                td
+                                  label(for='MemberEmail') 
+                                  input#MemberEmail1.form-control(type='text' name=('MemberEmail'+count) value = user.email)  
+                                td
+                                  label(for='MemberInstitution') 
+                                  input#MemberInstitution1.form-control(type='text' name=('MemberInstitution'+count) value = user.institution)  
+                                td
+                                  label(for='MemberDepartment') 
+                                  input#MemberDepartment1.form-control(type='text' name=('MemberDepartment'+count) value = user.department) 
+                                - count++ 
+                        while count < 5
+                          tr
+                                td
+                                  label(for='MemberNameSurname') 
+                                  input#MemberNameSurname1.form-control(type='text' name=('MemberNameSurname'+count) value = "")  
+                                td
+                                  label(for='MemberEmail') 
+                                  input#MemberEmail1.form-control(type='text' name=('MemberEmail'+count) value = value = "")  
+                                td
+                                  label(for='MemberInstitution') 
+                                  input#MemberInstitution1.form-control(type='text' name=('MemberInstitution'+count) value = "")  
+                                td
+                                  label(for='MemberDepartment') 
+                                  input#MemberDepartment1.form-control(type='text' name=('MemberDepartment'+count) value = "") 
+                                - count++ 
+
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if(user.userType === "advisor" && (form.formStatus === "Disapproved by EABDB" || form.formStatus === "Send to EABDB" ) && userType !== "student")
+              input.btn.btn-success(type='submit' value='Update')
+
+      else if(action === "approve" || action=== "view")
+        form(action='/'+ user.userType+"/approveForm" method='POST')
+          is
+            .form-row  
+              .col-md-6.mb-3
+                label(for='advisorNameSurname') Thesis Advisor Name Surname
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = advisor.nameSurname readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' placeholder='Please Enter' value = form.programName required='' readonly="readonly")
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='' readonly="readonly")
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   PhD with Master's
+                    .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |  PhD with Bachelor's            
+              .col-md-6.mb-3
+                label Thesis Defense: Master's Degree Thesis
+                div.span4#programType
+                if(form.isOnline)
+                  input(type='radio',name='programType',value='1' readonly="readonly" )#programType1
+                  label(for='programType1')
+                   i.yes
+                   span. 
+                    Face to Face
+                  br
+                  input(type='radio',name='programType',value='2' checked = 'checked' readonly="readonly" )#programType2
+                  label(for='programType2')
+                   i.yes
+                   span. 
+                     Online 
+                else
+                  input(type='radio',name='programType',value='1' checked = 'checked' readonly="readonly")#programType1
+                  label(for='programType1')
+                  i.yes
+                  span. 
+                    Face to Face
+                  br
+                  input(type='radio',name='programType',value='2' readonly="readonly")#programType2
+                  label(for='programType2')
+                  i.yes
+                  span. 
+                    Online  
+                    
+              .col-md-6.mb-3
+                label(for='place') The programme use for online the thesis defense
+                input#place.form-control(type='text' name='place' value=form.place required='' readonly="readonly")      
+              .col-md-6.mb-3
+                label(for='date')  Thesis Defence Date
+                input#date.form-control(type='date' name='date' value=form.date required='' readonly="readonly")
+              .col-md-6.mb-3
+                label(for='time')  Thesis Defence Hours Minutes
+                input#time.form-control(type='time' name='time' value=form.time required=''  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' placeholder=form._id value= form._id readonly='readonly')      
+              
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Official Member
+                  tbody 
+                       - var count = 1;
+                        each member in form.officialMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='officialMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('officialMemberNameSurname'+count) value = user.nameSurname readonly="readonly")  
+                                td
+                                  label(for='officialMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('officialMemberEmail'+count) value = user.email readonly="readonly")  
+                                td
+                                  label(for='officialMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('officialMemberInstitution'+count) value = user.institution readonly="readonly")  
+                                td
+                                  label(for='officialMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('officialMemberDepartment'+count) value = user.department readonly="readonly") 
+                                - count++ 
+                        while count < 5
+                              tr
+                                td
+                                  label(for='officialMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('officialMemberNameSurname'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='officialMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('officialMemberEmail'+count) value = value = "" readonly="readonly")  
+                                td
+                                  label(for='officialMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('officialMemberInstitution'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='officialMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('officialMemberDepartment'+count) value = "" readonly="readonly") 
+                                - count++ 
+
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Backup Members
+                       - var count = 1;
+                        each member in form.backupMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='backupMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('backupMemberNameSurname'+count) value = user.nameSurname readonly="readonly")  
+                                td
+                                  label(for='backupMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('backupMemberEmail'+count) value = user.email readonly="readonly")  
+                                td
+                                  label(for='backupMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('backupMemberInstitution'+count) value = user.institution readonly="readonly")  
+                                td
+                                  label(for='backupMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('backupMemberDepartment'+count) value = user.department readonly="readonly") 
+                                - count++ 
+                        while count < 3
+                          tr
+                                td
+                                  label(for='backupMemberNameSurname1') 
+                                  input#officialMemberNameSurname1.form-control(type='text' name=('backupMemberNameSurname'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='backupMemberEmail1') 
+                                  input#officialMemberEmail1.form-control(type='text' name=('backupMemberEmail'+count) value = value = "" readonly="readonly")  
+                                td
+                                  label(for='backupMemberInstitution1') 
+                                  input#officialMemberInstitution1.form-control(type='text' name=('backupMemberInstitution'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='backupMemberDepartment1') 
+                                  input#officialMemberDepartment1.form-control(type='text' name=('backupMemberDepartment'+count) value = "" readonly="readonly") 
+                                - count++ 
+                     
+              .row.container
+                table.table
+                  thead
+                    tr
+                      th(scope='col') Name Surname
+                      th(scope='col') Email
+                      th(scope='col') Institution
+                      th(scope='col') Department
+                  h4 Jury Members from outside IZTECH
+                  tbody
+                       - var count = 1;
+                        each member in form.outsideMembers
+                          each user in allUsers
+                            if user._id.equals(member._id)
+                              tr
+                                td
+                                  label(for='MemberNameSurname') 
+                                  input#MemberNameSurname1.form-control(type='text' name=('MemberNameSurname'+count) value = user.nameSurname readonly="readonly")  
+                                td
+                                  label(for='MemberEmail') 
+                                  input#MemberEmail1.form-control(type='text' name=('MemberEmail'+count) value = user.email readonly="readonly")  
+                                td
+                                  label(for='MemberInstitution') 
+                                  input#MemberInstitution1.form-control(type='text' name=('MemberInstitution'+count) value = user.institution readonly="readonly")  
+                                td
+                                  label(for='MemberDepartment') 
+                                  input#MemberDepartment1.form-control(type='text' name=('MemberDepartment'+count) value = user.department readonly="readonly") 
+                                - count++
+                        while count < 4
+                              tr
+                                td
+                                  label(for='MemberNameSurname') 
+                                  input#MemberNameSurname1.form-control(type='text' name=('MemberNameSurname'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='MemberEmail') 
+                                  input#MemberEmail1.form-control(type='text' name=('MemberEmail'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='MemberInstitution') 
+                                  input#MemberInstitution1.form-control(type='text' name=('MemberInstitution'+count) value = "" readonly="readonly")  
+                                td
+                                  label(for='MemberDepartment') 
+                                  input#MemberDepartment1.form-control(type='text' name=('MemberDepartment'+count) value = "" readonly="readonly") 
+                              - count++
+                                   
+            br
+            if(user.userType === "eabdb" && form.formStatus === "Send to EABDB" && userType !== "student")
+              input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Approve') 
+              input.btn.btn-danger.btn-lg.mr-4.input(type='submit' name="submit" value='Disapprove')  
+              .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+           

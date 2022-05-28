@@ -1,0 +1,258 @@
+extends ../layouts/main-layout.pug
+
+block content 
+      
+      h2.mt-4.pb-3 Form TS-b : Thesis Defense Exam Decision for Jury Attending Online
+      if(action === "create")
+        form(action='/'+ user.userType+"/createFormTSB" method='POST')
+          is
+            .form-row   
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' placeholder ="Please Enter" value = ''  required='') 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' placeholder ="Please Enter" value = ''  required='' )  
+              .col-md-6.mb-3
+                label(for='date') Exam Date
+                input#date.form-control(type='date' name='examDate' placeholder ="Please Enter" value = ''  required='')
+              
+              .col-md-6.mb-3
+                label(for='mNameSurname')  Member Name Surname
+                input#mNameSurname.form-control(type='text' name='mNameSurname' value = user.nameSurname  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mTitle')  Member Title
+                input#mTitle.form-control(type='text' name='mTitle' value=user.userType readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mInstitute')  Member Institution
+                input#mInstitute.form-control(type='text' name='mInstitute' value= user.institution  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mDepartment')  Member Department
+                input#mDepartment.form-control(type='text' name='mDepartment' value =user.department  readonly="readonly" )
+              .col-md-6.mb-3
+                label(for='mMail')  Member E mail
+                input#mMail.form-control(type='text' name='mMail' value = user.email readonly = "readonly")
+              
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value='' readonly = "readonly")
+              .col-md-6.mb-3
+                label Thesis Defence Exam Result
+                 div.span4#result
+                  input(type='radio',name='result',value='1' required = "")#result1
+                  label(for='result1')
+                   i.yes
+                   span. 
+                    Accepted
+                  br
+                  input(type='radio',name='result',value='2' required = "")#result2
+                  label(for='result2')
+                   i.yes
+                   span. 
+                     Rejected
+                  br
+                  input(type='radio',name='result',value='3' required = "")#result3
+                  label(for='result3')
+                   i.yes
+                   span. 
+                     Correction   
+              
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            input.btn.btn-success(type='submit' value='Save')
+      if(action === "approve" || action === "view")
+        form(action='/'+ user.userType+"/approveForm" method='POST')
+          is
+            .form-row   
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' placeholder ="Please Enter" value = student.nameSurname  readonly="readonly") 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID  readonly="readonly" )  
+              .col-md-6.mb-3
+                label(for='date') Date
+                input#date.form-control(type='date' name='date' value = form.examDate readonly="readonly")
+              
+              .col-md-6.mb-3
+                label(for='mNameSurname')  Member Name Surname
+                input#mNameSurname.form-control(type='text' name='mNameSurname' value = jury.nameSurname  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mTitle')  Member Title
+                input#mTitle.form-control(type='text' name='mTitle' value=jury.userType readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mInstitute')  Member Institution
+                input#mInstitute.form-control(type='text' name='mInstitute' value= jury.institution  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mDepartment')  Member Department
+                input#mDepartment.form-control(type='text' name='mDepartment' value =jury.department  readonly="readonly" )
+              .col-md-6.mb-3
+                label(for='mMail')  Member E mail
+                input#mMail.form-control(type='text' name='mMail' value = jury.email readonly = "readonly")
+              
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value= form._id readonly = "readonly")
+              .col-md-6.mb-3
+                label Thesis Defence Exam Result
+                 div.span4#result
+                  if(form.examResult === "Accepted")
+                    input(type='radio',name='result',value='1' checked = "checked"  )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted     
+                    br
+                    input(type='radio',name='result',value='2' )#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3' )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction       
+                  if(form.examResult === "Rejected")
+                    input(type='radio',name='result',value='1' )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted
+                    br
+                    input(type='radio',name='result',value='2' checked = "checked"  )#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3'  )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction   
+                  br
+                  if(form.examResult === "Correction")
+                    input(type='radio',name='result',value='1', )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted      
+                    br            
+                    input(type='radio',name='result',value='2' ,)#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3', checked = "checked" )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction   
+                  
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if((user.userType === "advisor" && form.formStatus === "Send to Advisor"))
+              input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Approve') 
+              input.btn.btn-danger.btn-lg.mr-4.input(type='submit' name="submit" value='Disapprove')
+      if(action === "update")
+        form(action='/'+ user.userType+"/updateFormTSB" method='POST')
+          is
+            .form-row   
+              .col-md-6.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' placeholder ="Please Enter" value = student.nameSurname required  ) 
+              .col-md-6.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID required )  
+              .col-md-6.mb-3
+                label(for='date') Date
+                input#date.form-control(type='date' name='date' value = form.examDate required)
+              
+              .col-md-6.mb-3
+                label(for='mNameSurname')  Member Name Surname
+                input#mNameSurname.form-control(type='text' name='mNameSurname' value = jury.nameSurname  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mTitle')  Member Title
+                input#mTitle.form-control(type='text' name='mTitle' value=jury.userType readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mInstitute')  Member Institution
+                input#mInstitute.form-control(type='text' name='mInstitute' value= jury.institution  readonly="readonly")
+              .col-md-6.mb-3
+                label(for='mDepartment')  Member Department
+                input#mDepartment.form-control(type='text' name='mDepartment' value =jury.department  readonly="readonly" )
+              .col-md-6.mb-3
+                label(for='mMail')  Member E mail
+                input#mMail.form-control(type='text' name='mMail' value = jury.email readonly = "readonly")
+              
+              .col-md-6.mb-3
+                label(for='requestNumber') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value= form._id )
+              .col-md-6.mb-3
+                label Thesis Defence Exam Result
+                 div.span4#result
+                  if(form.examResult === "Accepted")
+                    input(type='radio',name='result',value='1' checked = "checked"  )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted     
+                    br
+                    input(type='radio',name='result',value='2' )#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3' )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction       
+                  if(form.examResult === "Rejected")
+                    input(type='radio',name='result',value='1' )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted
+                    br
+                    input(type='radio',name='result',value='2' checked = "checked"  )#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3'  )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction   
+                  br
+                  if(form.examResult === "Correction")
+                    input(type='radio',name='result',value='1' )#result1
+                    label(for='result1')
+                      i.yes
+                      span. 
+                        Accepted      
+                    br            
+                    input(type='radio',name='result',value='2' )#result2
+                    label(for='result2')
+                      i.yes
+                      span. 
+                        Rejected
+                    br
+                    input(type='radio',name='result',value='3', checked = "checked", )#result3
+                    label(for='result3')
+                      i.yes
+                      span. 
+                        Correction   
+                  
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if((user.userType === "advisor" && form.formStatus === "Disapproved by EABDB"))
+              input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Update') 
+                        
+        
+

@@ -1,0 +1,522 @@
+extends ../layouts/main-layout.pug
+
+block content 
+      
+      h2.mt-4.pb-3 Form PPF : Master's Program Plan 
+      if(action === "create")
+        form(action='/'+ user.userType+"/createFormPPF" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value=advisor.nameSurname readonly required='')
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   With Thesis
+                .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   Without Thesis  
+              .col-md-4.mb-3
+                label(for='minimumNumberofCourses') Minimum Number of Courses
+                input#minimumNumberofCourses.form-control(type='text' name='minimumNumberofCourses' placeholder='Please Enter' required='')
+              .col-md-4.mb-344
+                label(for='minimumNumberofLocalCredits') Minimum Number of Local Credits
+                input#minimumNumberofLocalCredits.form-control(type='text' name='minimumNumberofLocalCredits' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='minimumNumberofECTSCredits') Minimum Number of ECTS Credits
+                input#minimumNumberofECTSCredits.form-control(type='text' name='minimumNumberofECTSCredits' placeholder='Please Enter' required='')  
+              .col-md-6.mb-3
+                label(for='selectSemester') Select Semester
+                select#selectSemester.form-control(name ="selectSemester")
+                  option(name="selectSemester" value="1") 1
+                  option(name="selectSemester" value="2") 2
+                  option(name="selectSemester" value="3") 3
+                  option(name="selectSemester" value="4") 4
+                  option(name="selectSemester" value="5") 5
+                  option(name="selectSemester" value="6") 6
+              .col-md-6.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value='' disabled='')
+              .row.container
+                 table.table
+                  thead
+                    tr
+                      th(scope='col') Code
+                      th(scope='col') Z/S
+                      th(scope='col') Credit
+                      th(scope='col') ECTS
+                  h4 Courses
+                  tbody
+                    tr
+                      td
+                        label(for='code1') 
+                        input#code1.form-control(type='text' name='code1' value = "" required='' )  
+                      td
+                        label(for='courseisSelective1') 
+                        input#courseisSelective1.form-control(type='text' name='courseisSelective1' value = "" required='' )  
+                      td
+                        label(for='credit1') 
+                        input#credit1.form-control(type='text' name='credit1' value = "" required='')  
+                      td
+                        label(for='ECTS1') 
+                        input#ECTS1.form-control(type='text' name='ECTS1' value = "" required='')  
+                    
+                    tr
+                      td
+                        label(for='code2') 
+                        input#code2.form-control(type='text' name='code2' value = "" )  
+                      td
+                        label(for='courseisSelective2') 
+                        input#courseisSelective2.form-control(type='text' name='courseisSelective2' value = "" )  
+                      td
+                        label(for='credit2') 
+                        input#credit2.form-control(type='text' name='credit2' value = "" )  
+                      td
+                        label(for='ECTS2') 
+                        input#ECTS2.form-control(type='text' name='ECTS2' value = "" ) 
+                     
+                    tr
+                      td
+                        label(for='code3') 
+                        input#code3.form-control(type='text' name='code3' value = "" )  
+                      td
+                        label(for='courseisSelective3') 
+                        input#courseisSelective3.form-control(type='text' name='courseisSelective3' value = "")  
+                      td
+                        label(for='credit3') 
+                        input#credit3.form-control(type='text' name='credit3' value = "" )  
+                      td
+                        label(for='ECTS3') 
+                        input#ECTS3.form-control(type='text' name='ECTS3' value = "" )
+
+                    tr
+                      td
+                        label(for='code4') 
+                        input#code4.form-control(type='text' name='code4' value = "" )  
+                      td
+                        label(for='courseisSelective4') 
+                        input#courseisSelective4.form-control(type='text' name='courseisSelective4' value = "")  
+                      td
+                        label(for='credit4') 
+                        input#credit4.form-control(type='text' name='credit4' value = "" )  
+                      td
+                        label(for='ECTS4') 
+                        input#ECTS4.form-control(type='text' name='ECTS4' value = "" )       
+                    tr
+                      td
+                        label(for='code5') 
+                        input#code5.form-control(type='text' name='code5' value = "" )  
+                      td
+                        label(for='courseisSelective5') 
+                        input#courseisSelective5.form-control(type='text' name='courseisSelective5' value = "")  
+                      td
+                        label(for='credit5') 
+                        input#credit5.form-control(type='text' name='credit5' value = "" )  
+                      td
+                        label(for='ECTS5') 
+                        input#ECTS5.form-control(type='text' name='ECTS5' value = "" )       
+                   
+              
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            input.btn.btn-success(type='submit' value='Save')
+      else if(action === "update")
+        form(action='/'+ user.userType+"/createFormPPF" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = advisor.nameSurname required='')
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   With Thesis
+                .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   Without Thesis  
+              .col-md-4.mb-3
+                label(for='minimumNumberofCourses') Minimum Number of Courses
+                input#minimumNumberofCourses.form-control(type='text' name='minimumNumberofCourses' value = form.minimumNumberofCourses required='')
+              .col-md-4.mb-344
+                label(for='minimumNumberofLocalCredits') Minimum Number of Local Credits
+                input#minimumNumberofLocalCredits.form-control(type='text' name='minimumNumberofLocalCredits' value = form.minimumNumberofLocalCredits required='')
+              .col-md-4.mb-3
+                label(for='minimumNumberofECTSCredits') Minimum Number of ECTS Credits
+                input#minimumNumberofECTSCredits.form-control(type='text' name='minimumNumberofECTSCredits' value = form.minimumNumberofECTSCredits required='')  
+              .col-md-6.mb-3
+                label(for='selectSemester') Select Semester
+                select#selectSemester.form-control(name ="selectSemester")
+                  option(name="selectSemester" value="1") 1
+                  option(name="selectSemester" value="2") 2
+                  option(name="selectSemester" value="3") 3
+                  option(name="selectSemester" value="4") 4
+                  option(name="selectSemester" value="5") 5
+                  option(name="selectSemester" value="6") 6
+              .col-md-6.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value = form._id readonly='readonly')
+              .row.container
+                 table.table
+                  thead
+                    tr
+                      th(scope='col') Code
+                      th(scope='col') Z/S
+                      th(scope='col') Credit
+                      th(scope='col') ECTS
+                  h4 Courses
+                  tbody
+                    tr
+                      td
+
+                        input#code1.form-control(type='text' name='code1' value = form.courseCodes[0] required = "" )   
+                      td
+
+                        input#courseisSelective1.form-control(type='text' name='courseisSelective1' value = form.courseIsSelectives[0] required = "")  
+                      td
+
+                        input#credit1.form-control(type='text' name='credit1' value = form.courseCredits[0] required = "")  
+                      td
+
+                        input#ECTS1.form-control(type='text' name='ECTS1' value = form.courseECTSs[0] required = "")  
+                    
+                    tr
+                      td
+
+                        input#code2.form-control(type='text' name='code2' value = form.courseCodes[1] )  
+                      td
+
+                        input#courseisSelective2.form-control(type='text' name='courseisSelective2' value = form.courseIsSelectives[1])  
+                      td
+
+                        input#credit2.form-control(type='text' name='credit2' value = form.courseCredits[1])  
+                      td
+
+                        input#ECTS2.form-control(type='text' name='ECTS2' value = form.courseECTSs[1]) 
+                     
+                    tr
+                      td
+
+                        input#code3.form-control(type='text' name='code3' value = form.courseCodes[2]  )  
+                      td
+
+                        input#courseisSelective3.form-control(type='text' name='courseisSelective3' value = form.courseIsSelectives[2] )  
+                      td
+
+                        input#credit3.form-control(type='text' name='credit3' value = form.courseCredits[2] )  
+                      td
+
+                        input#ECTS3.form-control(type='text' name='ECTS3' value = form.courseECTSs[2])
+
+                    tr
+                      td
+
+                        input#code4.form-control(type='text' name='code4' value = form.courseCodes[3]  )  
+                      td
+
+                        input#courseisSelective4.form-control(type='text' value = form.courseIsSelectives[3] )  
+                      td
+
+                        input#credit4.form-control(type='text' name='credit4' value = form.courseCredits[3] )  
+                      td
+
+                        input#ECTS4.form-control(type='text' name='ECTS4' value = form.courseECTSs[3] )       
+                    tr
+                      td
+
+                        input#code5.form-control(type='text' name='code5' value = form.courseCodes[4] )  
+                      td
+
+                        input#courseisSelective5.form-control(type='text' name='courseisSelective5' value = form.courseIsSelectives[4] )  
+                      td
+
+                        input#credit5.form-control(type='text' name='credit5' value = form.courseCredits[4] )  
+                      td
+  
+                        input#ECTS5.form-control(type='text' name='ECTS5' value = form.courseECTSs[4] )       
+                   
+              
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if(user.userType === "student" && (form.formStatus === "Disapproved by Advisor" || form.formStatus === "Disapproved by EABDB"))
+              input.btn.btn-success(type='submit' value='Update')
+      else if(action === "approve")
+        form(action='/'+ user.userType+"/approveForm" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = advisor.nameSurname readonly="readonly")
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   With Thesis
+                .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   Without Thesis  
+              .col-md-4.mb-3
+                label(for='minimumNumberofCourses') Minimum Number of Courses
+                input#minimumNumberofCourses.form-control(type='text' name='minimumNumberofCourses' value = form.minimumNumberofCourses readonly="readonly")
+              .col-md-4.mb-344
+                label(for='minimumNumberofLocalCredits') Minimum Number of Local Credits
+                input#minimumNumberofLocalCredits.form-control(type='text' name='minimumNumberofLocalCredits' value = form.minimumNumberofLocalCredits readonly="readonly")
+              .col-md-4.mb-3
+                label(for='minimumNumberofECTSCredits') Minimum Number of ECTS Credits
+                input#minimumNumberofECTSCredits.form-control(type='text' name='minimumNumberofECTSCredits' value = form.minimumNumberofECTSCredits readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='selectSemester') Selected Semester
+                input#selectSemester.form-control(type='text' name='selectSemester' value = form.selectSemester readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value = form._id readonly='readonly')
+              .row.container
+                 table.table
+                  thead
+                    tr
+                      th(scope='col') Code
+                      th(scope='col') Z/S
+                      th(scope='col') Credit
+                      th(scope='col') ECTS
+                  h4 Courses
+                  tbody
+                    tr
+                      td
+                        label(for='code1') 
+                        input#code1.form-control(type='text' name='code1' value = form.courseCodes[0] readonly="readonly")   
+                      td
+                        label(for='courseisSelective1') 
+                        input#courseisSelective1.form-control(type='text' name='courseisSelective1' value = form.courseIsSelectives[0] readonly="readonly")  
+                      td
+                        label(for='credit1') 
+                        input#credit1.form-control(type='text' name='credit1' value = form.courseCredits[0] readonly="readonly")  
+                      td
+                        label(for='ECTS1') 
+                        input#ECTS1.form-control(type='text' name='ECTS1' value = form.courseECTSs[0] readonly="readonly")  
+                    
+                    tr
+                      td
+                        label(for='code2') 
+                        input#code2.form-control(type='text' name='code2' value = form.courseCodes[1] readonly="readonly")  
+                      td
+                        label(for='courseisSelective2') 
+                        input#courseisSelective2.form-control(type='text' name='courseisSelective2' value = form.courseIsSelectives[1] readonly="readonly")  
+                      td
+                        label(for='credit2') 
+                        input#credit2.form-control(type='text' name='credit2' value = form.courseCredits[1] readonly="readonly")  
+                      td
+                        label(for='ECTS2') 
+                        input#ECTS2.form-control(type='text' name='ECTS2' value = form.courseECTSs[1] readonly="readonly") 
+                     
+                    tr
+                      td
+                        label(for='code3') 
+                        input#code3.form-control(type='text' name='code3' value = form.courseCodes[2] readonly="readonly")  
+                      td
+                        label(for='courseisSelective3') 
+                        input#courseisSelective3.form-control(type='text' name='courseisSelective3' value = form.courseIsSelectives[2] readonly="readonly")  
+                      td
+                        label(for='credit3') 
+                        input#credit3.form-control(type='text' name='credit3' value = form.courseCredits[2] readonly="readonly")  
+                      td
+                        label(for='ECTS3') 
+                        input#ECTS3.form-control(type='text' name='ECTS3' value = form.courseECTSs[2] readonly="readonly")
+
+                    tr
+                      td
+                        label(for='code4') 
+                        input#code4.form-control(type='text' name='code4' value = form.courseCodes[3] readonly="readonly")  
+                      td
+                        label(for='courseisSelective4') 
+                        input#courseisSelective4.form-control(type='text' name='courseisSelective4' value = form.courseIsSelectives[3] readonly="readonly")  
+                      td
+                        label(for='credit4') 
+                        input#credit4.form-control(type='text' name='credit4' value = form.courseCredits[3] readonly="readonly")  
+                      td
+                        label(for='ECTS4') 
+                        input#ECTS4.form-control(type='text' name='ECTS4' value = form.courseECTSs[3] readonly="readonly")       
+                    tr
+                      td
+                        label(for='code5') 
+                        input#code5.form-control(type='text' name='code5' value = form.courseCodes[4] readonly="readonly")  
+                      td
+                        label(for='courseisSelective5') 
+                        input#courseisSelective5.form-control(type='text' name='courseisSelective5' value = form.courseIsSelectives[4] readonly="readonly")  
+                      td
+                        label(for='credit5') 
+                        input#credit5.form-control(type='text' name='credit5' value = form.courseCredits[4] readonly="readonly")  
+                      td
+                        label(for='ECTS5') 
+                        input#ECTS5.form-control(type='text' name='ECTS5' value = form.courseECTSs[4] readonly="readonly")       
+                   
+              
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if((user.userType === "advisor" && form.formStatus === "Send to Advisor") || (user.userType === "eabdb" && form.formStatus === "Approved by Advisor"))
+              input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Approve') 
+              input.btn.btn-danger.btn-lg.mr-4.input(type='submit' name="submit" value='Disapprove')
+      else if(action === "view")
+        form(action='/'+ user.userType+"/getFormPPF" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value = advisor.nameSurname readonly="readonly")
+              .col-md-6.mb-3
+                label(for='programName') Master's Degree Thesis
+                .form-check
+                    input#programName.form-check-input(type='checkbox' value='' checked='' disabled='')
+                    label.form-check-label(for='flexCheckCheckedDisabled')
+                    |   With Thesis
+                .form-check
+                    input#flexCheckDisabled.form-check-input(type='checkbox' value='' disabled='')
+                    label.form-check-label(for='flexCheckDisabled')
+                    |   Without Thesis  
+              .col-md-4.mb-3
+                label(for='minimumNumberofCourses') Minimum Number of Courses
+                input#minimumNumberofCourses.form-control(type='text' name='minimumNumberofCourses' value = form.minimumNumberofCourses readonly="readonly")
+              .col-md-4.mb-344
+                label(for='minimumNumberofLocalCredits') Minimum Number of Local Credits
+                input#minimumNumberofLocalCredits.form-control(type='text' name='minimumNumberofLocalCredits' value = form.minimumNumberofLocalCredits readonly="readonly")
+              .col-md-4.mb-3
+                label(for='minimumNumberofECTSCredits') Minimum Number of ECTS Credits
+                input#minimumNumberofECTSCredits.form-control(type='text' name='minimumNumberofECTSCredits' value = form.minimumNumberofECTSCredits readonly="readonly")  
+              .col-md-6.mb-3
+                label(for='selectSemester') Selected Semester
+                input#selectSemester.form-control(type='text' name='selectSemester' value = form.selectSemester readonly="readonly")
+              .col-md-6.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value = form._id readonly='readonly')
+              .row.container
+                 table.table
+                  thead
+                    tr
+                      th(scope='col') Code
+                      th(scope='col') Z/S
+                      th(scope='col') Credit
+                      th(scope='col') ECTS
+                  h4 Courses
+                  tbody
+                    tr
+                      td
+                        label(for='code1') 
+                        input#code1.form-control(type='text' name='code1' value = form.courseCodes[0] readonly="readonly")   
+                      td
+                        label(for='courseisSelective1') 
+                        input#courseisSelective1.form-control(type='text' name='courseisSelective1' value = form.courseIsSelectives[0] readonly="readonly")  
+                      td
+                        label(for='credit1') 
+                        input#credit1.form-control(type='text' name='credit1' value = form.courseCredits[0] readonly="readonly")  
+                      td
+                        label(for='ECTS1') 
+                        input#ECTS1.form-control(type='text' name='ECTS1' value = form.courseECTSs[0] readonly="readonly")  
+                    
+                    tr
+                      td
+                        label(for='code2') 
+                        input#code2.form-control(type='text' name='code2' value = form.courseCodes[1] readonly="readonly")  
+                      td
+                        label(for='courseisSelective2') 
+                        input#courseisSelective2.form-control(type='text' name='courseisSelective2' value = form.courseIsSelectives[1] readonly="readonly")  
+                      td
+                        label(for='credit2') 
+                        input#credit2.form-control(type='text' name='credit2' value = form.courseCredits[1] readonly="readonly")  
+                      td
+                        label(for='ECTS2') 
+                        input#ECTS2.form-control(type='text' name='ECTS2' value = form.courseECTSs[1] readonly="readonly") 
+                     
+                    tr
+                      td
+                        label(for='code3') 
+                        input#code3.form-control(type='text' name='code3' value = form.courseCodes[2] readonly="readonly")  
+                      td
+                        label(for='courseisSelective3') 
+                        input#courseisSelective3.form-control(type='text' name='courseisSelective3' value = form.courseIsSelectives[2] readonly="readonly")  
+                      td
+                        label(for='credit3') 
+                        input#credit3.form-control(type='text' name='credit3' value = form.courseCredits[2] readonly="readonly")  
+                      td
+                        label(for='ECTS3') 
+                        input#ECTS3.form-control(type='text' name='ECTS3' value = form.courseECTSs[2] readonly="readonly")
+
+                    tr
+                      td
+                        label(for='code4') 
+                        input#code4.form-control(type='text' name='code4' value = form.courseCodes[3] readonly="readonly")  
+                      td
+                        label(for='courseisSelective4') 
+                        input#courseisSelective4.form-control(type='text' name='courseisSelective3' value = form.courseIsSelectives[3] readonly="readonly")  
+                      td
+                        label(for='credit4') 
+                        input#credit4.form-control(type='text' name='credit4' value = form.courseCredits[3] readonly="readonly")  
+                      td
+                        label(for='ECTS4') 
+                        input#ECTS4.form-control(type='text' name='ECTS4' value = form.courseECTSs[3] readonly="readonly")       
+                    tr
+                      td
+                        label(for='code5') 
+                        input#code5.form-control(type='text' name='code5' value = form.courseCodes[4] readonly="readonly")  
+                      td
+                        label(for='courseisSelective5') 
+                        input#courseisSelective5.form-control(type='text' name='courseisSelective5' value = form.courseIsSelectives[4] readonly="readonly")  
+                      td
+                        label(for='credit5') 
+                        input#credit5.form-control(type='text' name='credit5' value = form.courseCredits[4] readonly="readonly")  
+                      td
+                        label(for='ECTS5') 
+                        input#ECTS5.form-control(type='text' name='ECTS5' value = form.courseECTSs[4] readonly="readonly")       
+            br   
+      else
+          modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title You have already sent your PPF forms!
+                  button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                  | Please contact with your administrator. You may be trying to create more forms than you can create.

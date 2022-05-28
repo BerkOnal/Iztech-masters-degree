@@ -1,0 +1,39 @@
+
+nav#sidebar
+    .sidebar-header
+      p
+        img(src='../images/head.png' style='width: 40px;')
+        |    #{user.nameSurname}
+    ul.list-unstyled.components.button
+      p(style='text-align: start;')
+        | You've logged as 
+        label(style='text-transform:uppercase') #{user.userType}          
+      li
+        a(href='/requests/:allForms') Requests
+        if(user.userType !== "eabdb")
+          a.dropdown-toggle(href='#pageSubmenu' data-toggle='collapse' aria-expanded='false') Forms
+          ul#pageSubmenu.collapse.list-unstyled
+            if(user.userType === "student")
+              li
+                a(href='/student/getFormPPF') Form PPF
+              li
+                a(href='/student/getFormDA') Form DA
+              li
+                a(href='/student/getFormTD') Form TD
+            if(user.userType === "advisor")    
+              li
+                a(href='/advisor/getFormTJ') Form TJ
+            if(user.userType === "jury")
+              li 
+                a(href='/jury/getFormTSB') Form TSB
+
+      li
+        a(href='#') Calendar
+      li
+        a(href='#') Options
+      li
+        a(href='#') Help
+    ul.list-unstyled.CTAs
+      li
+        a.btn-outline-primary.download(href='https://lee.iyte.edu.tr/en/home-page/') Iztech Master Degree
+        a.btn.btn-primary(href='/account/logout') Logout

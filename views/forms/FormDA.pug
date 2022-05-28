@@ -1,0 +1,192 @@
+extends ../layouts/main-layout.pug
+
+block content 
+      
+      h2.mt-4.pb-3 Form DA : Course Selection From Other Institutions 
+      if(action === "create")
+        form(action='/'+ user.userType+"/createFormDA" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='studentNameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#email.form-control(type='text' name='email' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value= advisor.nameSurname  readonly placeholder="Please enter" required='')
+              .col-md-4.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' placeholder='Please Enter' required='')
+              .col-md-4.mb-344
+                label(for='courseUniversity') Course University
+                input#courseUniversity.form-control(type='text' name='courseUniversity' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='courseInstitute') Course Institute
+                input#courseInstitute.form-control(type='text' name='courseInstitute' placeholder='Please Enter' required='')  
+              .col-md-4.mb-3
+                label(for='courseCode') Course Code
+                input#courseCode.form-control(type='text' name='courseCode' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='courseName') Course Name
+                input#courseName.form-control(type='text' name='courseName' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='courseCredits') Course Credits
+                input#courseCredits.form-control(type='number' name='courseCredits' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='courseECTS') Course ECTS
+                input#courseECTS.form-control(type='number' name='courseECTS' placeholder='Please Enter' required='')
+              .col-md-4.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name='requestNumber' value='' disabled='')
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00' required = '')
+            br
+            input.btn.btn-success(type='submit' value='Save')               
+      else if(action === "update")
+         form(action='/'+user.userType+"/updateFormDA" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='nameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#studentEmail.form-control(type='text' name='studentEmail' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value =advisor.nameSurname required='')
+              .col-md-4.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' value=form.programName required='')
+              .col-md-4.mb-344
+                label(for='courseUniversity') Course University
+                input#courseUniversity.form-control(type='text' name='courseUniversity' value=form.courseUniversity required='')
+              .col-md-4.mb-3
+                label(for='courseInstitute') Course Institute
+                input#courseInstitute.form-control(type='text' name='courseInstitute' value=form.courseInstitute required='')  
+              .col-md-4.mb-3
+                label(for='courseCode') Course Code
+                input#courseCode.form-control(type='text' name='courseCode' value= form.courseCode required='')
+              .col-md-4.mb-3
+                label(for='courseName') Course Name
+                input#courseName.form-control(type='text' name='courseName' value = form.courseName required='')
+              .col-md-4.mb-3
+                label(for='courseCredits') Course Credits
+                input#courseCredits.form-control(type='number' name='courseCredits' value = form.courseCredit required='')
+              .col-md-4.mb-3
+                label(for='courseEcts') Course ECTS
+                input#courseECTS.form-control(type='number' name='courseECTS' value = form.courseECTS required='')
+              .col-md-4.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name= 'requestNumber' value = form._id readonly='readonly')
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br        
+            input.btn.btn-warning(type='submit' value='Update') 
+      else if(action === "approve")
+        form(action='/'+user.userType+"/approveForm" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='nameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#studentEmail.form-control(type='text' name='studentEmail' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value =advisor.nameSurname required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' value=form.programName readonly="readonly")
+              .col-md-4.mb-344
+                label(for='courseUniversity') Course University
+                input#courseUniversity.form-control(type='text' name='courseUniversity' value=form.courseUniversity readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseInstitute') Course Institute
+                input#courseInstitute.form-control(type='text' name='courseInstitute' value=form.courseInstitute readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='courseCode') Course Code
+                input#courseCode.form-control(type='text' name='courseCode' value= form.courseCode readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseName') Course Name
+                input#courseName.form-control(type='text' name='courseName' value = form.courseName required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseCredits') Course Credits
+                input#courseCredits.form-control(type='text' name='courseCredits' value = form.courseCredit required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseEcts') Course ECTS
+                input#courseECTS.form-control(type='text' name='courseECTS' value = form.courseECTS required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='text' name= 'requestNumber' value = form._id readonly='readonly')
+            .g-recaptcha(data-sitekey='6LfuWcYaAAAAAEeSURT8ijhAdEaNhB2YIW6VpM00')
+            br
+            if((user.userType === "advisor" && form.formStatus === "Send to Advisor") || (user.userType === "eabdb" && form.formStatus === "Approved by Advisor"))
+              input.btn.btn-success.btn-lg.mr-4.input(type='submit' name="submit" value='Approve') 
+              input.btn.btn-danger.btn-lg.mr-4.input(type='submit' name="submit" value='Disapprove') 
+      
+      else if(action === "view")
+         form(action='/'+user.userType+"/getFormDA" method='POST')
+          is
+            .form-row   
+              .col-md-4.mb-3
+                label(for='nameSurname') Student Name Surname
+                input#studentNameSurname.form-control(type='text' name='studentNameSurname' value = student.nameSurname readonly="readonly") 
+              .col-md-4.mb-3
+                label(for='studentID') Student ID
+                input#studentID.form-control(type='text' name='studentID' value = student.studentID readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='email') Student E-Mail
+                input#studentEmail.form-control(type='text' name='studentEmail' value = student.email readonly="readonly")
+              .col-md-4.mb-3
+                label(for='advisorNameSurname') Advisor               
+                input#advisorNameSurname.form-control(type='text' name='advisorNameSurname' value =advisor.nameSurname required='' readonly="readonly")              
+                
+              .col-md-4.mb-3
+                label(for='programName') Program Name
+                input#programName.form-control(type='text' name='programName' value=form.programName readonly="readonly")
+              .col-md-4.mb-344
+                label(for='courseUniversity') Course University
+                input#courseUniversity.form-control(type='text' name='courseUniversity' value=form.courseUniversity readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseInstitute') Course Institute
+                input#courseInstitute.form-control(type='text' name='courseInstitute' value=form.courseInstitute readonly="readonly")  
+              .col-md-4.mb-3
+                label(for='courseCode') Course Code
+                input#courseCode.form-control(type='text' name='courseCode' value= form.courseCode readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseName') Course Name
+                input#courseName.form-control(type='text' name='courseName' value = form.courseName required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseCredits') Course Credits
+                input#courseCredits.form-control(type='text' name='courseCredits' value = form.courseCredit required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='courseEcts') Course ECTS
+                input#courseECTS.form-control(type='number' name='courseECTS' value = form.courseECTS required='' readonly="readonly")
+              .col-md-4.mb-3
+                label(for='validationCustom02') Request Number
+                input#requestNumber.form-control(type='number' name= 'requestNumber' value = form._id readonly='readonly')
+            br
+      
+      else
+          modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title You have already sent your DA forms!
+                  button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                  | Please contact with your administrator. You may be trying to create more forms than you can create.
+                
+

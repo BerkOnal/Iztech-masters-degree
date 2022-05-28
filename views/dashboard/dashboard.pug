@@ -1,0 +1,34 @@
+extends ../layouts/main-layout.pug
+
+block content 
+
+    - var messages = getMessages()
+    if messages.success
+        each msg in messages.success
+            div.alert.alert-success.col !{messages.success}
+    if messages.error
+        each msg in messages.error
+            div.alert.alert-danger.col !{messages.error}
+            
+
+    
+    h1.pt-3 Welcome to Iztech Master's Degree System v0.0.2
+    br
+    h4 A web app for Master's Degree Student System Automation.
+    br
+    h3 Usage 
+    p In this release , Student, Advisor, Jury Member and EADB can access to the system. They can create, update or approve/disapprove forms and track the forms' status via Requests page.
+    p Available pages are : Login , Requests , FormTD, FormDA, FormPPF, FormTSb, FormTJ and Homepage.
+    p
+    br
+    h3 Team Members 
+    ul
+        li Mert Can Dönmez
+        li Muhammed Ayyıldız
+        li Berk Önal
+        li Fatma Büber
+        li Kıvılcım Berrak
+        li İhsan Can Yalabuk
+
+    
+    // Content section ends

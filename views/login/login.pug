@@ -1,0 +1,39 @@
+extends ../layouts/login-layout.pug
+
+block login
+
+
+    - var messages = getMessages()
+    if messages.success
+        each msg in messages.success
+            div.alert.alert-success.col !{messages.success}
+    if messages.error
+        each msg in messages.error
+            div.alert.alert-danger.col !{messages.error}
+
+    
+
+    .container-fluid
+
+        .row.no-gutter
+            
+            .col-md-8.col-lg-6
+                .login.d-flex.align-items-center.py-5
+                    .container
+                        .row
+                            .col-md-9.col-lg-8.mx-auto
+                                h3.login-heading.mb-4 Welcome To The Iztech Master's Degree System!
+                                form(action="/account/login" method="POST")
+                                    .form-label-group
+                                        input#email.form-control(type='email' name="email" placeholder='Email address' required='' autofocus='')
+                                        label(for='email') Email address
+                                    .form-label-group
+                                        input#password.form-control(type='password' name="password" placeholder='Password' required='')
+                                        label(for='password') Password
+                                    .custom-control.custom-checkbox.mb-3
+                                        input#customCheck1.custom-control-input(type='checkbox')
+                                        label.custom-control-label(for='customCheck1') Remember password
+                                    button.btn.btn-lg.btn-danger.btn-block.btn-login.text-uppercase.font-weight-bold.mb-2(type='submit') Sign in
+                                    .text-center
+                                        p Proudly made with ♥️ by Group 3
+            .d-none.d-md-flex.col-md-4.col-lg-6.bg-image

@@ -1,0 +1,55 @@
+extends ../layouts/main-layout.pug
+
+block content 
+
+    
+    div 
+        .row.mt-4.ml-auto
+            a.button.btn.btn-secondary.text-uppercase.font-weight-bold.front.mr-2(type='button' href=("/requests/:allRequests")) All Requests
+
+            a.button.btn.btn-secondary.text-uppercase.font-weight-bold.front.mr-2(type='button' href=("/requests/:pendingRequests")) Pending Requests
+
+            a.button.btn.btn-secondary.text-uppercase.font-weight-bold.front.mr-2(type='button' href=("/requests/:outgoingRequests")) Outgoing Requests
+
+            a.button.btn.btn-secondary.text-uppercase.font-weight-bold.front.mr-2(type='button' href=("/requests/:completedRequests")) Completed Requests
+    br
+    if forms.length > 0
+        table.table.mt-2
+            thead.text-center
+                tr
+                    th(scope='col') No 
+                    th(scope='col') Request Number
+                    th(scope='col') Form Name
+                    th(scope='col') Student Name
+                    th(scope='col') Status
+                    th(scope='col') Details
+            - var count = 1
+            each form in forms
+                tbody.text-center
+                    tr  
+                        td
+                            p #{count}
+                        td 
+                            value  #{form._id}
+                        td 
+                            value  #{form._type}  
+                        each u in allUsers
+                            if u._id.equals(form.student_id)
+                                td 
+                                    value  #{u.nameSurname}
+                        
+                        
+
+                        td 
+                            value  #{form.formStatus} 
+                        td  
+                            a.button.btn.btn-sm.btn-danger.text-uppercase.font-weight-bold.front(type='button' href=("/getForm/:" + form._id)) Details
+                        - count++
+                           
+                        
+    else
+        h1 No Request
+
+    table.table
+    
+    
